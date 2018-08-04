@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FFilms", "FFilms\FFilms.csproj", "{046D8B52-FF0C-4EC7-9D1A-535095EE3752}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FFParser", "FFParser\FFParser.csproj", "{786445EC-D99C-4A6C-A3C9-842CD557AAD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{046D8B52-FF0C-4EC7-9D1A-535095EE3752}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{046D8B52-FF0C-4EC7-9D1A-535095EE3752}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{046D8B52-FF0C-4EC7-9D1A-535095EE3752}.Release|Any CPU.Build.0 = Release|Any CPU
+		{786445EC-D99C-4A6C-A3C9-842CD557AAD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{786445EC-D99C-4A6C-A3C9-842CD557AAD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{786445EC-D99C-4A6C-A3C9-842CD557AAD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{786445EC-D99C-4A6C-A3C9-842CD557AAD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

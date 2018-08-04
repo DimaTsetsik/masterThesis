@@ -1,4 +1,5 @@
 ﻿using FFilms.Services.Abstractions;
+using FFParser.Services.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,11 @@ namespace FFilms.Controllers
     public class HomeController : Controller
     {
         private IMailService iMailService;
+        private IGoogleBookService iGoogleBookService;
 
-        public HomeController (IMailService ImailService) {
+        public HomeController (IMailService ImailService, IGoogleBookService iGoogleBookService) {
             iMailService = ImailService;
+            this.iGoogleBookService = iGoogleBookService;
         }
 
         public async Task<ActionResult>  Index()
@@ -27,6 +30,7 @@ namespace FFilms.Controllers
             //{
             //    throw new NotImplementedException();
             //}
+            var a = await iGoogleBookService.GetBooksByNameAsync("C#");
             return View();
         }
 

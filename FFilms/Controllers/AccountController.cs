@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using FFilms.Models;
 using FFilms.Services.Abstractions;
+using FFilms.Enumerations;
 
 namespace FFilms.Controllers
 {
@@ -19,10 +20,12 @@ namespace FFilms.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private IMailService iMailService;
+        private IEnumeration iEnumeration;
 
-        public AccountController(IMailService ImailService)
+        public AccountController(IMailService ImailService, IEnumeration iEnumeration)
         {
             iMailService = ImailService;
+            this.iEnumeration = iEnumeration;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -168,7 +171,7 @@ namespace FFilms.Controllers
                     var confirmresult = false;
                     try
                     {
-                        confirmresult = await iMailService.SendMessage("test@mail", "userName", callbackUrl);
+                        confirmresult = await iMailService.SendMessage("test@mail", "userName", callbackUrl, iEnumeration.GetConfirmationEmailText, iEnumeration.GetContactMessagePath);
                     }
                     catch(Exception e)
                     {

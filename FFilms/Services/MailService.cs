@@ -15,14 +15,14 @@ namespace FFilms.Services
     public class MailService : IMailService
     {
         protected readonly IMailClient mailClient;
-        private readonly string contactMessagePath = "~/Views/Mail/ContactMessage.cshtml";
+        private const string contactMessagePath = "~/Views/Mail/ContactMessage.cshtml";
 
         public MailService(IMailClient ImailClient)
         {
             mailClient = ImailClient;
         }
 
-        public async Task<bool> SendMessage(string userEmail, string userName, string message)
+        public async Task<bool> SendMessage(string userEmail, string userName, string message, string subject = "Message", string path = contactMessagePath)
         {
             var result = false;
 
@@ -38,7 +38,6 @@ namespace FFilms.Services
                 var serverPath = HttpContext.Current.Server.MapPath(contactMessagePath);
                 var template = File.ReadAllText(serverPath);
                 var body = Engine.Razor.RunCompile(template, DateTime.UtcNow.Ticks.ToString(), null, model);
-                var subject = "Contact Message";
                 result = await mailClient.SendEmailAsync(ConfigurationManager.AppSettings["adminEmail"], subject, body);
             }
             catch (Exception e)

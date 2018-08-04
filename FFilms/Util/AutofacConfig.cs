@@ -4,6 +4,11 @@ using System.Web.Mvc;
 using FFilms.Controllers;
 using FFilms.Services.Abstractions;
 using FFilms.Services;
+using FFilms.Enumerations;
+using FFParser;
+using FFParser.Services.Abstractions;
+using FFParser.Services;
+
 
 namespace FFilms.Util
 {
@@ -25,6 +30,14 @@ namespace FFilms.Util
             builder.RegisterType<MailService>()
                    .As<IMailService>()
                    .InstancePerRequest();
+
+            builder.RegisterType<Enumeration>()
+                  .As<IEnumeration>()
+                  .InstancePerRequest();
+
+            builder.RegisterType<GoogleBookService>()
+                  .As<IGoogleBookService>()
+                  .InstancePerRequest();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
