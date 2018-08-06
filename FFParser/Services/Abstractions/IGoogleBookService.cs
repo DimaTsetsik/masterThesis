@@ -5,6 +5,6 @@ namespace FFParser.Services.Abstractions
 {
     public interface IGoogleBookService
     {
-        Task<GoogleBookModel> GetBooksByNameAsync(string name);
+        Task<GoogleBookModel> GetBooksByNameAsync(string name, int startIndex, int itemsOnPage);
     }
 }

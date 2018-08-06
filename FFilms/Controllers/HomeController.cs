@@ -30,7 +30,7 @@ namespace FFilms.Controllers
             //{
             //    throw new NotImplementedException();
             //}
-            var a = await iGoogleBookService.GetBooksByNameAsync("C#");
+            var a = await iGoogleBookService.GetBooksByNameAsync("C#", 1, 12);
             return View();
         }
 
