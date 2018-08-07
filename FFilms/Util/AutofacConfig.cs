@@ -22,6 +22,7 @@ namespace FFilms.Util
 
             builder.RegisterType<HomeController>().InstancePerRequest();
             builder.RegisterType<AccountController>().InstancePerRequest();
+            builder.RegisterType<BooksController>().InstancePerRequest();
 
             builder.RegisterType<SmtpMailClient>()
                    .As<IMailClient>()
@@ -38,6 +39,10 @@ namespace FFilms.Util
             builder.RegisterType<GoogleBookService>()
                   .As<IGoogleBookService>()
                   .InstancePerRequest();
+
+            builder.RegisterType<BooksService>()
+                   .As<IBooksService>()
+                   .InstancePerRequest();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

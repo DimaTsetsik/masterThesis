@@ -1,0 +1,51 @@
+﻿@using System.Collections.Generic;
+@using FFilms.Models;
+@model BooksViewModel
+
+@{
+    ViewBag.Title = "GetBooksByName";
+}
+
+
+<h2>@Model.BooksModels.totalItems</h2>
+<h3>to eng @(Model.BooksModels.totalItems - Model.CurrentPage * 20) <h3>
+
+        @using (Html.BeginForm("GetBooksByName", "Books"))
+        {
+            <input type="text" name="bookName" />
+            <button type="submit"> Пошук</button>
+
+        }
+
+        @foreach (var item in Model.BooksModels.items)
+        {
+            <div class="col-md-3">
+                <a href="@item.accessInfo.webReaderLink" target="_blank">
+                    <img src="@item.volumeInfo.imageLinks.thumbnail" width="150px" height="200px"><br>
+                </a>
+            </div>
+        }
+
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+
+                <li class="page-item">
+                    <a href="@Url.Action("GetBooksByName", "Books", new { bookName = Model.BookName, page = Model.CurrentPage - 1  }, Request.Url.Scheme)">
+                        <span>Previous</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a href="@Url.Action("GetBooksByName", "Books", new { bookName = Model.BookName, page = 2  }, Request.Url.Scheme)">
+                        <span>1</span>
+                    </a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a href="@Url.Action("GetBooksByName", "Books", new { bookName = Model.BookName, page = Model.CurrentPage + 1  }, Request.Url.Scheme)">
+                        <span>Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
