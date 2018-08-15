@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using FFParser.Services.Abstractions;
@@ -16,6 +17,8 @@ namespace FFParser.Services
         {
             using (WebClient wc = new WebClient())
             {
+                wc.Encoding= Encoding.UTF8;
+
                 var json = wc.DownloadString(url);
                 JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
                 var webEntity = javaScriptSerializer.Deserialize<T>(json);

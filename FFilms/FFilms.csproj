@@ -222,6 +222,7 @@
     <Compile Include="Services\Abstractions\IMailService.cs" />
     <Compile Include="Services\BooksService.cs" />
     <Compile Include="Services\MailService.cs" />
+    <Compile Include="Services\Pager.cs" />
     <Compile Include="Services\SmtpMailClient.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Util\AutofacConfig.cs" />

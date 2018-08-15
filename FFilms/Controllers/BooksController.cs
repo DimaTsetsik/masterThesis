@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using FFilms.Models;
+using FFilms.Services;
 using FFilms.Services.Abstractions;
 using FFParser.Models;
 
@@ -30,13 +32,14 @@ namespace FFilms.Controllers
             BooksViewModel model = new BooksViewModel
             {
                 BookName = bookName.Trim(),
-                CurrentPage = page
+                CurrentPage = page,
             };
 
             model.BooksModels = await iBookService.GetBooksByName(bookName, page, 20);
+            var pager = new Pager(model.BooksModels.totalItems, page, 20);
+            model.Pager = pager;
+           
             return View(model);
         }
-
-
     }
 }

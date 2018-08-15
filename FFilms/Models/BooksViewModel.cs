@@ -1,4 +1,5 @@
-﻿using FFParser.Models;
+﻿using FFilms.Services;
+using FFParser.Models;
 
 namespace FFilms.Models
 {
@@ -9,5 +10,7 @@ namespace FFilms.Models
         public int CurrentPage { get; set; }
 
         public GoogleBookModel BooksModels { get; set; }
+
+        public Pager Pager { get; set; }
     }
 }
