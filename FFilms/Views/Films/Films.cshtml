@@ -1,0 +1,11 @@
+﻿@using FFilms.Models;
+@model MoonwalkViewModel
+
+@foreach (var item in Model.MoonwalkModel)
+{
+    <p>@item.title_ru </p>
+    
+    <iframe src="@item.iframe_url" width="610" height="370" frameborder="0" allowfullscreen></iframe>
+}
+
+<h2>Films</h2>

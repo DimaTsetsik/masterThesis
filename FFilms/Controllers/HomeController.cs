@@ -1,11 +1,7 @@
-﻿using FFilms.Services.Abstractions;
-using FFParser.Services.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
+using FFilms.Services.Abstractions;
+using FFParser.Services.Abstractions;
 
 namespace FFilms.Controllers
 {
@@ -16,7 +12,7 @@ namespace FFilms.Controllers
 
         public HomeController (IMailService ImailService, IGoogleBookService iGoogleBookService) {
             iMailService = ImailService;
-            this.iGoogleBookService = iGoogleBookService;
+            this.iGoogleBookService = iGoogleBookService;            
         }
 
         public async Task<ActionResult>  Index()

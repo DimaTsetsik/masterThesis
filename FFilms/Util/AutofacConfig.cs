@@ -5,10 +5,8 @@ using FFilms.Controllers;
 using FFilms.Services.Abstractions;
 using FFilms.Services;
 using FFilms.Enumerations;
-using FFParser;
 using FFParser.Services.Abstractions;
 using FFParser.Services;
-
 
 namespace FFilms.Util
 {
@@ -42,6 +40,14 @@ namespace FFilms.Util
 
             builder.RegisterType<BooksService>()
                    .As<IBooksService>()
+                   .InstancePerRequest();
+
+            builder.RegisterType<Moonwalk>()
+                   .As<IMoonwalk>()
+                   .InstancePerRequest();
+
+            builder.RegisterType<MoonwalkService>()
+                   .As<IMoonwalkService>()
                    .InstancePerRequest();
 
             var container = builder.Build();

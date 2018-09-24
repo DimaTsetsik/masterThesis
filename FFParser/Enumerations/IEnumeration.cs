@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FFParser.Enumerations
+﻿namespace FFParser.Enumerations
 {
     public interface IEnumeration
     {
         string GetGoogleBooksApiUrl { get; }
-    }
+
+        string GetImDbApiUrl { get; }
+
+        string GetImDbapiToken { get; }
+
+        string GetMoonwalkUrl { get; }
+
+        string[] GetMoonwalkToken { get; }
+    }    
 }
