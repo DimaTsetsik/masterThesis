@@ -6,5 +6,7 @@ namespace FFilms.Services.Abstractions
     public interface IMoonwalkService
     {
         Task<MoonwalkModel[]> GetFilmsByName(string name);
+
+        Task<MoonwalkModel[]> GetFilmsById(string id);
     }
 }

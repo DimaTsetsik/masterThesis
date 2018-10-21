@@ -31,5 +31,16 @@ namespace FFilms.Controllers
             return View(model);
         }
 
+        public async Task<ActionResult> GetFilmById(string filmId, string posterImg) {
+            MoonwalkViewModel model = new MoonwalkViewModel
+            {
+                Poster = posterImg
+            };
+
+            model.MoonwalkModel = await moonwalkService.GetFilmsById(filmId);
+
+            return View(model);
+        }
+
     }
 }

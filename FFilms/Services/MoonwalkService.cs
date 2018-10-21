@@ -14,6 +14,11 @@ namespace FFilms.Services
             this.iMoonwalk = iMoonwalk;
         }
 
+        public async Task<MoonwalkModel[]> GetFilmsById(string id)
+        {
+            return await iMoonwalk.GetFilmById(id);
+        }
+
         public async Task<MoonwalkModel[]> GetFilmsByName(string name)
         {
             return await iMoonwalk.GetFilmByName(name);

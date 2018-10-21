@@ -45,6 +45,7 @@ namespace FFParser.Models
 
     public class MoonwalkModel
     {
+        public string posret { get; set; }
         public string title_ru { get; set; }
         public string title_en { get; set; }
         public int year { get; set; }

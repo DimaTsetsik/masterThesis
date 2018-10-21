@@ -10,6 +10,8 @@ namespace FFilms.Models
 
         public int CurrentPage { get; set; }
 
+        public string Poster { get; set; }
+
         //public Pager Pager { get; set; }
     }
 }
