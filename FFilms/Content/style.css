@@ -4,3 +4,17 @@
   padding-left: 0;
   margin-bottom: 0;
   list-style: none; }
+
+.pagination-container {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); }
+
+.search-input {
+  display: inline-block;
+  max-width: 340px;
+  line-height: 44px;
+  border: 1px solid #f98a53; }
+  .search-input:hover {
+    line-height: 42px;
+    border-width: 2px; }

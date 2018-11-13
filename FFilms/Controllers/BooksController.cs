@@ -21,7 +21,7 @@ namespace FFilms.Controllers
             return View();
         }
 
-        public async Task<ActionResult> GetBooksByName(string bookName = "Angular", int page = 1)
+        public async Task<ActionResult> GetBooksByName(string bookName = "Technology", int page = 1)
         {
             BooksViewModel model = new BooksViewModel
             {

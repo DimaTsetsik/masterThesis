@@ -7,93 +7,107 @@
 }
 
 
-<h2>@Model.BooksModels.totalItems</h2>
-<h3>to eng @(Model.BooksModels.totalItems - Model.CurrentPage * 20) <h3>
+@*<h2>@Model.BooksModels.totalItems</h2>
+    <h3>
+        to eng @(Model.BooksModels.totalItems - Model.CurrentPage * 20) <h3>*@
 
-        @using (Html.BeginForm("GetBooksByName", "Books"))
-        {
-            <input type="text" name="bookName" />
-            <button type="submit"> Пошук</button>
 
-        }
+<!-- start banner Area -->
+<section class="banner-area relative about-banner" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Events
+                </h1>
+                <p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="events.html"> Events</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+<!-- Start events-list Area -->
+<section class="events-list-area section-gap event-page-lists">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12 pb-30">
+                @using (Html.BeginForm("GetBooksByName", "Books"))
+                {
+                    <input type="text" name="bookName" placeholder="Enter text to search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter text to search'" required="" class="single-input-primary search-input">
+                    <button class="text-uppercase primary-btn mx-auto" type="submit"> Пошук</button>
 
-        @if (Model.BooksModels.items != null && Model.BooksModels.items.Any())
-        {
-            foreach (var item in Model.BooksModels.items)
+                }
+            </div>
+
+            @if (Model.BooksModels.items != null && Model.BooksModels.items.Any())
             {
-            
-                <div class="col-md-3">
-                    <a href="@(item.accessInfo?.webReaderLink ?? "")" target="_blank">
-                        <img src="@(item.volumeInfo?.imageLinks?.thumbnail ?? "")" width="150px" height="200px"><br>
-                    </a>
-                    <p>@(item.volumeInfo?.title ?? "")</p>
-                    <div>
+                foreach (var item in Model.BooksModels.items)
+                {
+                    <div class="col-lg-6 pb-30">
+                        <div class="single-carusel row align-items-center">
+                            <div class="col-12 col-md-6 thumb">
+                                <img class="img-fluid" src="@(item.volumeInfo?.imageLinks?.thumbnail ?? "")" alt="">
+                            </div>
+                            <div class="detials col-12 col-md-6">
+                                <p>@(item.volumeInfo.publishedDate ?? "-")</p>
+                                <h4>
+                                    @if (item.volumeInfo.authors != null && item.volumeInfo.authors.Any())
+                                    {
+                                        foreach (var author in item.volumeInfo?.authors)
+                                        {
+                                            @author
+                                        }
+                                    }
+                                </h4>
+                                <p>
+                                    @(item.volumeInfo?.title ?? "")
+                                </p>
+                                <a class="text-uppercase primary-btn mx-auto mt-30" href="@(item.accessInfo?.webReaderLink ?? "")" target="_blank">Detail</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-  
+                }
             }
-        }
 
-                @*<nav aria-label="Page navigation example">
+            @if (Model.Pager.EndPage > 1)
+            {
+                <nav class="blog-pagination justify-content-center d-flex pagination-container">
                     <ul class="pagination">
-
-                        <li class="page-item">
-                            <a href="@Url.Action("GetBooksByName", "Books", new { bookName = Model.BookName, page = Model.CurrentPage - 1  }, Request.Url.Scheme)">
-                                <span>Previous</span>
-                            </a>
-                        </li>
-                        <li class="page-item">
-                            <a href="@Url.Action("GetBooksByName", "Books", new { bookName = Model.BookName, page = 2  }, Request.Url.Scheme)">
-                                <span>1</span>
-                            </a>
-                        </li>
-                        @if (Model.CurrentPage > 2)
+                        @if (Model.Pager.CurrentPage > 1)
                         {
-                            for (int ppage = Model.CurrentPage; ppage >= Model.CurrentPage - 3; ppage--)
-                            {
-                                <li class="page-item"><a class="page-link" href="@Url.Action("GetBooksByName", "Books", new { bookName = Model.BookName, page = ppage  }, Request.Url.Scheme)">@ppage</a></li>
-                            }
+                            <li class="page-item"><a href="@Url.Action("GetBooksByName", "Books", new { bookName = Model.BookName, page = 1  }, Request.Url.Scheme)" class="page-link">First</a></li>
+                            <li class="page-item"><a href="@Url.Action("GetBooksByName", "Books", new { bookName = Model.BookName, page = Model.Pager.CurrentPage - 1  }, Request.Url.Scheme)" class="page-link">Previous</a></li>
                         }
-                        <li class="page-item active"><a class="page-link" href="@Url.Action("GetBooksByName", "Books", new { bookName = Model.BookName, page = 2  }, Request.Url.Scheme)">@Model.CurrentPage</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a href="@Url.Action("GetBooksByName", "Books", new { bookName = Model.BookName, page = Model.CurrentPage + 1  }, Request.Url.Scheme)">
-                                <span>Next</span>
-                            </a>
-                        </li>
-                    </ul>*@
 
-                    @if (Model.Pager.EndPage > 1)
-                    {
-                        <ul class="pagination">
-                            @if (Model.Pager.CurrentPage > 1)
-                            {
-                                <li>
-                                    <a href="@Url.Action("GetBooksByName", "Books", new { bookName = Model.BookName, page = 1  }, Request.Url.Scheme)">First</a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Action("GetBooksByName", "Books", new { bookName = Model.BookName, page = Model.Pager.CurrentPage - 1  }, Request.Url.Scheme)">Previous</a>
-                                </li>
-                            }
+                        @for (var cpage = Model.Pager.StartPage; cpage <= Model.Pager.EndPage; cpage++)
+                        {
+                            <li class="page-item @(cpage == Model.Pager.CurrentPage ? "active" : "")"><a href="@Url.Action("GetBooksByName", "Books", new { bookName = Model.BookName, page = cpage }, Request.Url.Scheme)" class="page-link">@cpage</a></li>
+                        }
 
-                            @for (var cpage = Model.Pager.StartPage; cpage <= Model.Pager.EndPage; cpage++)
-                            {
-                                <li class="@(cpage == Model.Pager.CurrentPage ? "active" : "")">
-                                    <a href="@Url.Action("GetBooksByName", "Books", new { bookName = Model.BookName, page = cpage }, Request.Url.Scheme)">@cpage</a>
-                                </li>
-                            }
-
-                            @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
-                            {
-                                <li>
-                                    <a href="@Url.Action("GetBooksByName", "Books", new { bookName = Model.BookName, page = Model.Pager.CurrentPage + 1  }, Request.Url.Scheme)">Next</a>
-                                </li>
-                                <li>
-                                    
-                                    <a href="@Url.Action("GetBooksByName", "Books", new { bookName = Model.BookName, page = Model.Pager.TotalPages }, Request.Url.Scheme)">Last</a>
-                                </li>
-                            }
-                        </ul>
-                    }
-
+                        @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+                        {
+                            <li class="page-item"><a href="@Url.Action("GetBooksByName", "Books", new { bookName = Model.BookName, page = Model.Pager.CurrentPage + 1  }, Request.Url.Scheme)" class="page-link">Next</a></li>
+                            <li class="page-item"><a href="@Url.Action("GetBooksByName", "Books", new { bookName = Model.BookName, page = Model.Pager.TotalPages }, Request.Url.Scheme)" class="page-link">Last</a></li>
+                        }
+                    </ul>
                 </nav>
+            }
+        </div>
+    </div>
+</section>
+<!-- End events-list Area -->
+<!-- Start cta-two Area -->
+<section class="cta-two-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 cta-left">
+                <h1>Not Yet Satisfied with our Trend?</h1>
+            </div>
+            <div class="col-lg-4 cta-right">
+                <a class="primary-btn wh" href="#">view our blog</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End cta-two Area -->
