@@ -35,10 +35,8 @@
                 <div class="single-sidebar-widget search-widget">
                     @using (Html.BeginForm("GetBooksByName", "Books", FormMethod.Post, new { @class = "search-form" }))
                     {
-                        @*<form class="search-form" action="#">*@
                         <input placeholder="Search Posts" name="bookName" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search books'">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                        @*</form>*@
+                        <button type="submit"><i class="fa fa-search search-icon"></i></button>
                     }
                 </div>
 

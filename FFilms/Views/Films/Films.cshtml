@@ -1,16 +1,127 @@
 ﻿@using FFilms.Models;
 @model MoonwalkViewModel
 
-@foreach (var item in Model.MoonwalkModel)
-{
-    <p>@item.title_ru </p>
-    
-   // <iframe src="@item.iframe_url" width="610" height="370" frameborder="0" allowfullscreen></iframe>
-   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-       <a href="@Url.Action("GetFilmById", "Films", new { filmId = item.kinopoisk_id, posterImg = item.posret })">
-        <img src="@item.posret" width="100%" height="300px">
-       </a>
-   </div>
-}
 
 <h2>Films</h2>
+
+
+@*<h2>@Model.BooksModels.totalItems</h2>
+    <h3>
+        to eng @(Model.BooksModels.totalItems - Model.CurrentPage * 20) <h3>*@
+
+
+<!-- start banner Area -->
+<section class="banner-area relative about-banner" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Events
+                </h1>
+                <p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="events.html"> Events</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+<!-- Start events-list Area -->
+<section class="events-list-area section-gap event-page-lists">
+    <div class="container">
+        <div class="col-lg-12 sidebar-widgets">
+            <div class="widget-wrap">
+                <div class="single-sidebar-widget search-widget">
+                    @using (Html.BeginForm("Films", "Films", FormMethod.Post, new { @class = "search-form" }))
+                    {
+                        <input placeholder="Search Posts" name="filmName" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search books'">
+                        <button type="submit"><i class="fa fa-search search-icon"></i></button>
+                    }
+                </div>
+
+
+                <div class="single-sidebar-widget tag-cloud-widget">
+                    <h4 class="tagcloud-title">Tag Clouds</h4>
+                    <ul>
+                        <li><a href="#">Technology</a></li>
+                        <li><a href="#">Fashion</a></li>
+                        <li><a href="#">Architecture</a></li>
+                        <li><a href="#">Fashion</a></li>
+                        <li><a href="#">Food</a></li>
+                        <li><a href="#">Technology</a></li>
+                        <li><a href="#">Lifestyle</a></li>
+                        <li><a href="#">Art</a></li>
+                        <li><a href="#">Adventure</a></li>
+                        <li><a href="#">Food</a></li>
+                        <li><a href="#">Lifestyle</a></li>
+                        <li><a href="#">Adventure</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="row align-items-center">
+
+                @*@foreach (var item in Model.MoonwalkModel)
+                {
+                    <p>@item.title_ru </p>
+
+                    // <iframe src="@item.iframe_url" width="610" height="370" frameborder="0" allowfullscreen></iframe>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <a href="@Url.Action("GetFilmById", "Films", new { filmId = item.kinopoisk_id, posterImg = item.posret })">
+                            <img src="@item.posret" width="100%" height="300px">
+                        </a>
+                    </div>
+                }*@
+
+
+                @if (Model.MoonwalkModel != null && Model.MoonwalkModel.Any())
+                {
+                    foreach (var item in Model.MoonwalkModel)
+                    {
+                        <div class="col-lg-6 pb-30">
+                            <div class="single-carusel row align-items-center">
+                                <div class="col-12 col-md-6 thumb">
+                                    <img class="img-fluid" src="@item.posret" alt="">
+                                </div>
+                                <div class="detials col-12 col-md-6">
+                                    <p>@item.year</p>
+                                    <h4>
+                                       
+                                        @(@item.title_ru ?? "-")
+                                    </h4>
+                                    <p>
+                                        @foreach (var actor in item.material_data.actors) {
+                                            @actor
+                                        }
+                                        
+                                    </p>
+                                    <p>Raiting: @(item.material_data.imdb_rating.ToString() ?? "-")</p>
+                                    <p>
+                                        @(item.material_data.year.ToString() ?? "-")
+                                    </p>
+                                    <a class="text-uppercase primary-btn mx-auto mt-30" href="@Url.Action("GetFilmById", "Films", new { filmId = item.kinopoisk_id, posterImg = item.posret })" target="_blank">Detail</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End events-list Area -->
+<!-- Start cta-two Area -->
+<section class="cta-two-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 cta-left">
+                <h1>Not Yet Satisfied with our Trend?</h1>
+            </div>
+            <div class="col-lg-4 cta-right">
+                <a class="primary-btn wh" href="#">view our blog</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End cta-two Area -->
