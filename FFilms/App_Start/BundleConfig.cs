@@ -22,9 +22,19 @@ namespace FFilms
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
+            //bundles.Add(new ScriptBundle("~/ThemeScripts").Include(
+            //          "~/ThemeStyles/js/jquery/jquery-2.2.4.min.js",
+            //          "~/ThemeStyles/js/bootstrap/popper.min.js",
+            //          "~/ThemeStyles/js/bootstrap/bootstrap.min.js",
+            //          "~/ThemeStyles/js/bootstrap/plugins.js",
+            //          "~/ThemeStyles/js/bootstrap//active.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            //bundles.Add(new StyleBundle("~/ThemeStyles")
+            //    .Include("~/ThemeStyles/style.css"));
         }
     }
 }

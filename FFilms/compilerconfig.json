@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "ThemeStyles/style.css",
+    "inputFile": "ThemeStyles/scss/style.scss"
+  },
+  {
+    "outputFile": "Content/style.css",
+    "inputFile": "Content/style.scss"
+  }
+]

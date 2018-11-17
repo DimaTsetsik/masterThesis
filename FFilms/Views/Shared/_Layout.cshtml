@@ -1,45 +1,110 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@ViewBag.Title – приложение ASP.NET</title>
-    @Styles.Render("~/Content/css")
+    @*@Styles.Render("~/Content/css")*@
     @Scripts.Render("~/bundles/modernizr")
-
+    @*@Scripts.Render("~/ThemeStyles")*@
+    <link href="~/ThemeStyles/css/animate.min.css" rel="stylesheet" />
+    <link href="~/ThemeStyles/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/ThemeStyles/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/ThemeStyles/css/jquery-ui.css" rel="stylesheet" />
+    <link href="~/ThemeStyles/css/linearicons.css" rel="stylesheet" />
+    <link href="~/ThemeStyles/css/magnific-popup.css" rel="stylesheet" />
+    <link href="~/ThemeStyles/css/main.css" rel="stylesheet" />
+    <link href="~/ThemeStyles/css/nice-select.css" rel="stylesheet" />
+    <link href="~/ThemeStyles/css/owl.carousel.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+    <link href="~/Content/style.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    <li>@Html.ActionLink("О программе", "About", "Home")</li>
-                    <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+    <header id="header" id="home">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6 col-8 header-top-left no-padding">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
+                        @Html.Partial("_LoginPartial")
+                        @*<a href="tel:+953 012 3654 896"><span class="lnr lnr-phone-handset"></span> <span class="text">+953 012 3654 896</span></a>
+                        <a href="mailto:support@colorlib.com"><span class="lnr lnr-envelope"></span> <span class="text">support@colorlib.com</span></a>*@
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
+        <div class="container main-menu">
+            <div class="row align-items-center justify-content-between d-flex">
+                <div id="logo">
+                    <a href="index.html"><img src="~/ThemeStyles/img/logo.png" alt="" title="" /></a>
+                </div>
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li><a href="@Url.Action("GetBooksByName", "Books")">Books</a></li>
+                        <li><a href="@Url.Action("Films", "Films")">Films and Serials</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li class="menu-has-children">
+                            <a href="">Blog</a>
+                            <ul>
+                                <li><a href="blog-home.html">Blog Home</a></li>
+                                <li><a href="blog-single.html">Blog Single</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-has-children">
+                            <a href="">Pages</a>
+                            <ul>
+                                <li><a href="course-details.html">Course Details</a></li>
+                                <li><a href="event-details.html">Event Details</a></li>
+                                <li><a href="elements.html">Elements</a></li>
+                                <li class="menu-has-children">
+                                    <a href="">Level 2 </a>
+                                    <ul>
+                                        <li><a href="#">Item One</a></li>
+                                        <li><a href="#">Item Two</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav><!-- #nav-menu-container -->
+            </div>
+        </div>
+    </header><!-- #header -->
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
-        </footer>
-    </div>
+        @Html.Partial("~/Views/Shared/Footer.cshtml")
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+    @*@Scripts.Render("~/ThemeScripts")*@
+    <script src="~/ThemeStyles/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="~/ThemeStyles/js/vendor/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+
+    <script src="~/ThemeStyles/js/easing.min.js"></script>
+    <script src="~/ThemeStyles/js/hoverIntent.js"></script>
+    <script src="~/ThemeStyles/js/jquery-ui.js"></script>
+    <script src="~/ThemeStyles/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/ThemeStyles/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/ThemeStyles/js/jquery.nice-select.min.js"></script>
+    <script src="~/ThemeStyles/js/jquery.tabs.min.js"></script>
+    <script src="~/ThemeStyles/js/mail-script.js"></script>
+    <script src="~/ThemeStyles/js/main.js"></script>
+    <script src="~/ThemeStyles/js/owl.carousel.min.js"></script>
+    <script src="~/ThemeStyles/js/superfish.min.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
