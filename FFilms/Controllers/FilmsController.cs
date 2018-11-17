@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 using FFilms.Models;
+using FFilms.Repositories.Abstractions;
 using FFilms.Services.Abstractions;
 
 namespace FFilms.Controllers
@@ -8,10 +9,13 @@ namespace FFilms.Controllers
     public class FilmsController : Controller
     {
         private IMoonwalkService moonwalkService;
+        private IGenresFilmsRepo iGenresFilmsRepo;
 
-        public FilmsController(IMoonwalkService moonwalkService)
+
+        public FilmsController(IMoonwalkService moonwalkService, IGenresFilmsRepo iGenresFilmsRepo)
         {
             this.moonwalkService = moonwalkService;
+            this.iGenresFilmsRepo = iGenresFilmsRepo;
         }
 
         public async Task<ActionResult> Index()
@@ -27,6 +31,7 @@ namespace FFilms.Controllers
             };
 
             model.MoonwalkModel = await moonwalkService.GetFilmsByName(filmName);
+            model.GenresFilms = await iGenresFilmsRepo.GetGenresFilmsAsync();
 
             return View(model);
         }
@@ -38,6 +43,7 @@ namespace FFilms.Controllers
             };
 
             model.MoonwalkModel = await moonwalkService.GetFilmsById(filmId);
+            model.GenresFilms = await iGenresFilmsRepo.GetGenresFilmsAsync();
 
             return View(model);
         }

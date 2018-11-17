@@ -1,4 +1,6 @@
-﻿using FFParser.Models;
+﻿using FFilms.Repositories.Models;
+using FFParser.Models;
+using System.Collections.Generic;
 
 namespace FFilms.Models
 {
@@ -11,6 +13,8 @@ namespace FFilms.Models
         public int CurrentPage { get; set; }
 
         public string Poster { get; set; }
+
+        public List<GenresFilms> GenresFilms { get; set; }
 
         //public Pager Pager { get; set; }
     }

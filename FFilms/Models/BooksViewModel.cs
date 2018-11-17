@@ -1,5 +1,7 @@
 ﻿using FFilms.Services;
 using FFParser.Models;
+using System.Collections.Generic;
+using FFilms.Repositories.Models;
 
 namespace FFilms.Models
 {
@@ -12,5 +14,7 @@ namespace FFilms.Models
         public GoogleBookModel BooksModels { get; set; }
 
         public Pager Pager { get; set; }
+
+        public List<GenresBooks> GenresBooks { get; set; }
     }
 }
