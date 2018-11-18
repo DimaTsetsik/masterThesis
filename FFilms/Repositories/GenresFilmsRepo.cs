@@ -1,8 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
 using System.Threading.Tasks;
 using FFilms.Repositories.Abstractions;
 using FFilms.Repositories.Models;
