@@ -225,6 +225,7 @@
     <Compile Include="Repositories\Abstractions\IGenresFilmsRepo.cs" />
     <Compile Include="Repositories\Abstractions\IGenresBooksRepo.cs" />
     <Compile Include="Repositories\AspNetUsersRepos.cs" />
+    <Compile Include="Repositories\BaseRepo.cs" />
     <Compile Include="Repositories\GenresFilmsRepo.cs" />
     <Compile Include="Repositories\GenresBooksRepo.cs" />
     <Compile Include="Repositories\Models\GenresFilms.cs" />
