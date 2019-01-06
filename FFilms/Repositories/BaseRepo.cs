@@ -19,12 +19,13 @@ namespace FFilms.Repositories
 
         public List<T> GetDataByQuery<T>(string query)
         {
-            List<T> booksGenres = new List<T>();
+            List<T> result = new List<T>();
+
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                booksGenres = db.Query<T>(query).ToList();
+                result = db.Query<T>(query).ToList();
             }
-            return booksGenres;
+            return result;
         }
     }
 }

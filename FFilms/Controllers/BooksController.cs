@@ -37,7 +37,6 @@ namespace FFilms.Controllers
             model.Pager = pager;
             model.GenresBooks = await iGenresBooksRepo.GetGenresBooksListAsync();
 
-
             return View(model);
         }
     }

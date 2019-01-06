@@ -30,3 +30,10 @@
   height: 350px;
   width: auto;
   margin-top: 50px; }
+
+.section-gap {
+  padding: 0 !important; }
+
+.footer-bottom {
+  padding-top: 20px;
+  padding-bottom: 15px; }
